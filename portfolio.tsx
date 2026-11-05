@@ -224,19 +224,21 @@ const HeroSection = () => {
       </div>
 
       {/* Desktop Hero Portrait */}
-      <FadeIn delay={0.6} y={30} className="hidden md:block absolute left-1/2 -translate-x-1/2 bottom-0 z-10 pointer-events-none sm:pointer-events-auto">
-        <Magnet strength={4} padding={200}>
-          <img 
-            src={profileImg || "./profile.jpg"} 
-            alt="Shaanthakumar"
-            className="w-[340px] md:w-[420px] lg:w-[480px] object-cover object-top h-[460px] md:h-[540px] lg:h-[620px] rounded-t-[40px] shadow-[0_0_50px_rgba(241,238,232,0.1)] opacity-95 transition-transform duration-500 hover:scale-[1.01]"
-            style={{ 
-              WebkitMaskImage: 'linear-gradient(to bottom, black 85%, transparent 100%)', 
-              maskImage: 'linear-gradient(to bottom, black 85%, transparent 100%)' 
-            }}
-          />
-        </Magnet>
-      </FadeIn>
+      <div className="hidden md:block absolute left-1/2 -translate-x-1/2 bottom-0 z-10 pointer-events-none sm:pointer-events-auto">
+        <FadeIn delay={0.6} y={30}>
+          <Magnet strength={4} padding={200}>
+            <img 
+              src={profileImg || "./profile.jpg"} 
+              alt="Shaanthakumar"
+              className="w-[340px] md:w-[420px] lg:w-[480px] object-cover object-top h-[460px] md:h-[540px] lg:h-[620px] rounded-t-[40px] shadow-[0_0_50px_rgba(241,238,232,0.1)] opacity-95 transition-transform duration-500 hover:scale-[1.01]"
+              style={{ 
+                WebkitMaskImage: 'linear-gradient(to bottom, black 85%, transparent 100%)', 
+                maskImage: 'linear-gradient(to bottom, black 85%, transparent 100%)' 
+              }}
+            />
+          </Magnet>
+        </FadeIn>
+      </div>
 
       {/* Desktop Bottom Bar */}
       <div className="hidden md:flex justify-between items-end w-full pb-4 sm:pb-8 md:pb-10 z-20 relative">
