@@ -139,10 +139,23 @@ const Character = ({ children, progress, range }) => {
 
 const HeroSection = () => {
   return (
-    <section className="relative h-screen w-full flex flex-col justify-between overflow-x-clip px-6 md:px-10 py-6 md:py-8">
+    <section className="relative min-h-[100svh] md:h-screen w-full flex flex-col justify-between overflow-x-clip px-5 sm:px-8 md:px-10 py-5 sm:py-6 md:py-8">
       {/* Navbar */}
-      <FadeIn delay={0} y={-20} className="flex justify-between items-center w-full z-20 relative">
-        <div className="text-xl font-bold text-[#f1eee8] tracking-widest uppercase">Shaanthakumar</div>
+      <FadeIn delay={0} y={-20} className="flex justify-between items-center w-full z-30 relative">
+        <div className="text-lg sm:text-xl font-bold text-[#f1eee8] tracking-widest uppercase">
+          Shaanthakumar
+        </div>
+
+        {/* Mobile Quick Contact Button */}
+        <div className="flex md:hidden">
+          <a href="#contact">
+            <button className="bg-[#FF655E] text-[#f1eee8] px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider shadow-md hover:bg-[#f1eee8] hover:text-[#0e4f4a] transition-all">
+              Contact
+            </button>
+          </a>
+        </div>
+
+        {/* Desktop Nav */}
         <nav className="hidden md:flex gap-8">
           {["About", "Services", "Projects", "Contact"].map((link) => (
             <a key={link} href={`#${link.toLowerCase()}`} className="text-[#f1eee8]/60 hover:text-[#f1eee8] text-sm lg:text-[1.2rem] font-medium uppercase tracking-wider transition-colors duration-200">
@@ -152,8 +165,57 @@ const HeroSection = () => {
         </nav>
       </FadeIn>
 
-      {/* Hero Heading */}
-      <div className="relative z-20 flex flex-col items-center mt-auto md:mt-20">
+      {/* MOBILE HERO VIEW (Phones & Small Tablets) */}
+      <div className="flex md:hidden flex-col items-center text-center my-auto py-4 z-20 w-full max-w-sm mx-auto">
+        <FadeIn delay={0.1} y={20}>
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#f1eee8]/10 border border-[#f1eee8]/20 text-[#FF655E] text-xs font-semibold uppercase tracking-wider mb-3">
+            <span className="w-2 h-2 rounded-full bg-[#FF655E] animate-pulse"></span>
+            <span>AI & Software Systems</span>
+          </div>
+        </FadeIn>
+
+        <FadeIn delay={0.2} y={20}>
+          <h1 className="font-black uppercase tracking-tight text-3xl sm:text-4xl text-[#f1eee8] leading-tight mb-2">
+            Hi, I'm <br />
+            <span className="hero-heading text-4xl sm:text-5xl text-[#FF655E]">Shaanthakumar</span>
+          </h1>
+        </FadeIn>
+
+        <FadeIn delay={0.3} y={20}>
+          <p className="text-[#f1eee8]/80 text-xs sm:text-sm font-light max-w-xs mb-4">
+            Specializing in AI, Machine Learning, modern web applications, and backend architecture.
+          </p>
+        </FadeIn>
+
+        {/* Mobile Portrait Card */}
+        <FadeIn delay={0.4} y={20} className="w-full flex justify-center">
+          <div className="relative w-[210px] sm:w-[240px] h-[280px] sm:h-[320px] rounded-[28px] overflow-hidden border-2 border-[#f1eee8]/25 shadow-[0_15px_50px_rgba(0,0,0,0.5)]">
+            <img 
+              src={profileImg || "./profile.jpg"} 
+              alt="Shaanthakumar"
+              className="w-full h-full object-cover object-top"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#0e4f4a] via-transparent to-transparent opacity-50 pointer-events-none" />
+          </div>
+        </FadeIn>
+
+        {/* Mobile Action Buttons */}
+        <FadeIn delay={0.5} y={20} className="flex items-center gap-3 mt-5">
+          <a href="#contact">
+            <button className="bg-[#FF655E] text-[#f1eee8] px-6 py-2.5 rounded-full font-bold uppercase tracking-wider text-xs shadow-lg hover:bg-[#f1eee8] hover:text-[#0e4f4a] transition-all">
+              Contact Me
+            </button>
+          </a>
+          <a href="#projects">
+            <button className="border border-[#f1eee8]/40 text-[#f1eee8] px-5 py-2.5 rounded-full font-semibold uppercase tracking-wider text-xs hover:bg-[#f1eee8]/10 transition-all">
+              View Work
+            </button>
+          </a>
+        </FadeIn>
+      </div>
+
+      {/* DESKTOP HERO VIEW (md and up) */}
+      <div className="hidden md:flex relative z-20 flex-col items-center mt-20">
         <FadeIn delay={0.15} y={40} className="w-full flex justify-center">
           <h1 className="hero-heading font-black uppercase tracking-tight leading-none whitespace-nowrap text-[12vw] sm:text-[14vw] md:text-[15vw] lg:text-[14vw]">
             hi, i'm shaanthakumar
@@ -161,13 +223,13 @@ const HeroSection = () => {
         </FadeIn>
       </div>
 
-      {/* Hero Portrait */}
-      <FadeIn delay={0.6} y={30} className="absolute left-1/2 -translate-x-1/2 bottom-0 z-10 pointer-events-none sm:pointer-events-auto">
+      {/* Desktop Hero Portrait */}
+      <FadeIn delay={0.6} y={30} className="hidden md:block absolute left-1/2 -translate-x-1/2 bottom-0 z-10 pointer-events-none sm:pointer-events-auto">
         <Magnet strength={4} padding={200}>
           <img 
             src={profileImg || "./profile.jpg"} 
             alt="Shaanthakumar"
-            className="w-[260px] sm:w-[340px] md:w-[420px] lg:w-[480px] object-cover object-top h-[380px] sm:h-[460px] md:h-[540px] lg:h-[620px] rounded-t-[40px] shadow-[0_0_50px_rgba(241,238,232,0.1)] opacity-95 transition-transform duration-500 hover:scale-[1.01]"
+            className="w-[340px] md:w-[420px] lg:w-[480px] object-cover object-top h-[460px] md:h-[540px] lg:h-[620px] rounded-t-[40px] shadow-[0_0_50px_rgba(241,238,232,0.1)] opacity-95 transition-transform duration-500 hover:scale-[1.01]"
             style={{ 
               WebkitMaskImage: 'linear-gradient(to bottom, black 85%, transparent 100%)', 
               maskImage: 'linear-gradient(to bottom, black 85%, transparent 100%)' 
@@ -176,8 +238,8 @@ const HeroSection = () => {
         </Magnet>
       </FadeIn>
 
-      {/* Bottom Bar */}
-      <div className="flex justify-between items-end w-full pb-4 sm:pb-8 md:pb-10 z-20 relative">
+      {/* Desktop Bottom Bar */}
+      <div className="hidden md:flex justify-between items-end w-full pb-4 sm:pb-8 md:pb-10 z-20 relative">
         <FadeIn delay={0.35} y={20} className="max-w-[160px] sm:max-w-[220px] md:max-w-[260px]">
           
         </FadeIn>
@@ -264,37 +326,37 @@ const MarqueeSection = () => {
 
 const AboutSection = () => {
   return (
-    <section id="about" className="relative min-h-screen flex flex-col items-center justify-center px-5 sm:px-8 py-20 bg-[#0e4f4a] overflow-hidden">
-      {/* Decorative Corners */}
-      <FadeIn delay={0.1} x={-80} duration={0.9} className="absolute top-[4%] left-[1%] sm:left-[2%] md:left-[4%] w-[120px] sm:w-[160px] md:w-[210px]">
+    <section id="about" className="relative min-h-screen flex flex-col items-center justify-center px-4 sm:px-8 py-16 md:py-24 bg-[#0e4f4a] overflow-hidden">
+      {/* Decorative Corners (Desktop Only) */}
+      <FadeIn delay={0.1} x={-80} duration={0.9} className="hidden md:block absolute top-[4%] left-[1%] sm:left-[2%] md:left-[4%] w-[120px] sm:w-[160px] md:w-[210px]">
         <img src="https://shrug-person-78902957.figma.site/_components/v2/ebb2b8f25d8e24d5f0a5ca8af4c950de81aa2fd7/moon_icon.11395d36.png" alt="Moon" className="w-full h-auto opacity-70 mix-blend-lighten" />
       </FadeIn>
-      <FadeIn delay={0.25} x={-80} duration={0.9} className="absolute bottom-[8%] left-[3%] sm:left-[6%] md:left-[10%] w-[100px] sm:w-[140px] md:w-[180px]">
+      <FadeIn delay={0.25} x={-80} duration={0.9} className="hidden md:block absolute bottom-[8%] left-[3%] sm:left-[6%] md:left-[10%] w-[100px] sm:w-[140px] md:w-[180px]">
         <img src="https://shrug-person-78902957.figma.site/_components/v2/ebb2b8f25d8e24d5f0a5ca8af4c950de81aa2fd7/p59_1.4659672e.png" alt="3D Object" className="w-full h-auto opacity-70 mix-blend-lighten" />
       </FadeIn>
-      <FadeIn delay={0.15} x={80} duration={0.9} className="absolute top-[4%] right-[1%] sm:right-[2%] md:right-[4%] w-[120px] sm:w-[160px] md:w-[210px]">
+      <FadeIn delay={0.15} x={80} duration={0.9} className="hidden md:block absolute top-[4%] right-[1%] sm:right-[2%] md:right-[4%] w-[120px] sm:w-[160px] md:w-[210px]">
         <img src="https://shrug-person-78902957.figma.site/_components/v2/ebb2b8f25d8e24d5f0a5ca8af4c950de81aa2fd7/lego_icon-1.703bb594.png" alt="Lego" className="w-full h-auto opacity-70 mix-blend-lighten" />
       </FadeIn>
-      <FadeIn delay={0.3} x={80} duration={0.9} className="absolute bottom-[8%] right-[3%] sm:right-[6%] md:right-[10%] w-[130px] sm:w-[170px] md:w-[220px]">
+      <FadeIn delay={0.3} x={80} duration={0.9} className="hidden md:block absolute bottom-[8%] right-[3%] sm:right-[6%] md:right-[10%] w-[130px] sm:w-[170px] md:w-[220px]">
         <img src="https://shrug-person-78902957.figma.site/_components/v2/ebb2b8f25d8e24d5f0a5ca8af4c950de81aa2fd7/Group_134-1.2e04f3ce.png" alt="3D Group" className="w-full h-auto opacity-70 mix-blend-lighten" />
       </FadeIn>
 
-      <div className="z-10 flex flex-col items-center gap-16 md:gap-24 text-center max-w-4xl">
+      <div className="z-10 flex flex-col items-center gap-8 md:gap-20 text-center max-w-4xl px-2">
         <FadeIn y={40}>
-          <h2 className="hero-heading font-black uppercase leading-none tracking-tight text-[3rem] sm:text-[8vw] md:text-[140px]">
+          <h2 className="hero-heading font-black uppercase leading-tight tracking-tight text-4xl sm:text-6xl md:text-[8vw] lg:text-[140px]">
             About me
           </h2>
         </FadeIn>
 
         <AnimatedText 
           text="Specializing in cutting-edge AI & Machine Learning solutions, responsive web applications, and end-to-end software development. I create high-performance digital experiences tailored to solve real problems. Let's build something incredible together!" 
-          className="font-medium leading-relaxed max-w-[700px] text-[1rem] sm:text-[1.5vw] md:text-[1.35rem]"
+          className="font-medium leading-relaxed max-w-[700px] text-base sm:text-lg md:text-[1.35rem]"
         />
 
         <FadeIn delay={0.2} y={30}>
           <a href="#contact">
             <Magnet>
-              <button className="bg-transparent border-2 border-[#FF655E] text-[#f1eee8] px-8 py-4 rounded-full font-medium uppercase tracking-widest hover:bg-[#FF655E] transition-colors duration-300">
+              <button className="bg-transparent border-2 border-[#FF655E] text-[#f1eee8] px-8 py-3.5 sm:py-4 rounded-full font-medium uppercase tracking-widest text-xs sm:text-sm hover:bg-[#FF655E] transition-colors duration-300">
                 Let's Talk
               </button>
             </Magnet>
@@ -325,20 +387,20 @@ const ServicesSection = () => {
   ];
 
   return (
-    <section id="services" className="bg-[#f1eee8] text-[#0e4f4a] rounded-t-[40px] md:rounded-t-[60px] px-5 sm:px-10 py-24 md:py-32 relative z-20 -mt-10">
-      <h2 className="font-black uppercase text-center mb-16 md:mb-28 text-[3rem] sm:text-[8vw] md:text-[120px]">
+    <section id="services" className="bg-[#f1eee8] text-[#0e4f4a] rounded-t-[30px] sm:rounded-t-[40px] md:rounded-t-[60px] px-4 sm:px-10 py-16 md:py-32 relative z-20 -mt-10">
+      <h2 className="font-black uppercase text-center mb-10 md:mb-24 text-4xl sm:text-6xl md:text-[8vw] lg:text-[120px] tracking-tight">
         Services
       </h2>
 
       <div className="max-w-6xl mx-auto flex flex-col">
         {services.map((svc, idx) => (
-          <FadeIn key={svc.num} delay={idx * 0.1} y={20} className="border-b border-[#0e4f4a]/15 py-10 md:py-14 flex flex-col md:flex-row items-start md:items-center gap-6 md:gap-12 hover:bg-[#0e4f4a]/5 px-6 rounded-2xl transition-colors">
-            <div className="text-[3rem] md:text-[100px] font-black text-[#0e4f4a] leading-none">
+          <FadeIn key={svc.num} delay={idx * 0.1} y={20} className="border-b border-[#0e4f4a]/15 py-8 md:py-14 flex flex-col md:flex-row items-start md:items-center gap-4 md:gap-12 hover:bg-[#0e4f4a]/5 px-4 sm:px-6 rounded-2xl transition-colors">
+            <div className="text-4xl sm:text-6xl md:text-[100px] font-black text-[#0e4f4a] leading-none">
               {svc.num}
             </div>
             <div className="flex flex-col gap-2 flex-1">
-              <h3 className="font-bold uppercase text-[1.5rem] md:text-[2.5rem]">{svc.name}</h3>
-              <p className="font-light leading-relaxed max-w-2xl text-[1rem] md:text-[1.25rem] text-[#0e4f4a]/70">
+              <h3 className="font-bold uppercase text-xl sm:text-2xl md:text-[2.5rem]">{svc.name}</h3>
+              <p className="font-light leading-relaxed max-w-2xl text-sm sm:text-base md:text-[1.25rem] text-[#0e4f4a]/75">
                 {svc.desc}
               </p>
             </div>
@@ -353,6 +415,14 @@ const ProjectsSection = () => {
   const containerRef = useRef(null);
   const { scrollYProgress } = useScroll({ target: containerRef, offset: ["start start", "end end"] });
   const [selectedProject, setSelectedProject] = useState<any>(null);
+  const [isDesktop, setIsDesktop] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => setIsDesktop(window.innerWidth >= 1024);
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   const projects = [
     {
@@ -418,11 +488,11 @@ const ProjectsSection = () => {
   ];
 
   return (
-    <section id="projects" ref={containerRef} className="bg-[#0e4f4a] rounded-t-[40px] md:rounded-t-[60px] relative z-30 -mt-10 pt-24 pb-[20vh] px-5 sm:px-10">
-      <h2 className="hero-heading font-black uppercase text-center mb-6 md:mb-10 text-[3rem] sm:text-[8vw] md:text-[120px]">
+    <section id="projects" ref={containerRef} className="bg-[#0e4f4a] rounded-t-[30px] sm:rounded-t-[40px] md:rounded-t-[60px] relative z-30 -mt-10 pt-16 md:pt-24 pb-[10vh] md:pb-[20vh] px-4 sm:px-10">
+      <h2 className="hero-heading font-black uppercase text-center mb-4 md:mb-8 text-4xl sm:text-6xl md:text-[8vw] lg:text-[120px] tracking-tight">
         Projects
       </h2>
-      <p className="text-center text-[#f1eee8]/70 max-w-2xl mx-auto mb-16 md:mb-24 text-base md:text-lg font-light">
+      <p className="text-center text-[#f1eee8]/70 max-w-2xl mx-auto mb-10 md:mb-20 text-sm sm:text-base md:text-lg font-light px-2">
         Engineered systems spanning Artificial Intelligence, Cybersecurity, Machine Learning, and High-Throughput Automation from my technical portfolio.
       </p>
 
@@ -435,24 +505,24 @@ const ProjectsSection = () => {
           return (
             <motion.div
               key={proj.num}
-              style={{ scale, top: `calc(8vh + ${idx * 25}px)` }}
-              className="sticky h-fit mb-16 sm:mb-24 w-full rounded-[36px] md:rounded-[50px] border-2 border-[#f1eee8]/25 bg-[#0e4f4a]/95 backdrop-blur-md p-6 sm:p-8 md:p-10 shadow-2xl flex flex-col gap-6 transform-origin-top"
+              style={isDesktop ? { scale, top: `calc(8vh + ${idx * 25}px)` } : undefined}
+              className={`${isDesktop ? 'sticky' : 'relative'} h-fit mb-10 md:mb-24 w-full rounded-[24px] sm:rounded-[36px] md:rounded-[50px] border border-[#f1eee8]/20 bg-[#0e4f4a]/95 backdrop-blur-md p-4 sm:p-8 md:p-10 shadow-2xl flex flex-col gap-5 sm:gap-6 transform-origin-top`}
             >
               {/* Card Header */}
-              <div className="flex flex-col lg:flex-row justify-between items-start lg:items-end gap-6 border-b border-[#f1eee8]/15 pb-6">
-                <div className="flex items-start sm:items-end gap-4 sm:gap-6">
-                  <span className="text-[3.5rem] md:text-[5.5rem] font-black text-[#FF655E] leading-none">{proj.num}</span>
+              <div className="flex flex-col lg:flex-row justify-between items-start lg:items-end gap-4 sm:gap-6 border-b border-[#f1eee8]/15 pb-4 sm:pb-6">
+                <div className="flex items-start sm:items-end gap-3 sm:gap-6">
+                  <span className="text-[2.75rem] sm:text-[4rem] md:text-[5.5rem] font-black text-[#FF655E] leading-none">{proj.num}</span>
                   <div>
                     <span className="text-[#f1eee8]/60 text-xs sm:text-sm uppercase tracking-widest font-semibold">{proj.category}</span>
-                    <h3 className="text-[#f1eee8] text-2xl sm:text-3xl md:text-4xl font-bold uppercase tracking-tight">{proj.name}</h3>
-                    <p className="text-[#f1eee8]/80 text-sm sm:text-base font-normal mt-1">{proj.subtitle}</p>
+                    <h3 className="text-[#f1eee8] text-xl sm:text-2xl md:text-4xl font-bold uppercase tracking-tight">{proj.name}</h3>
+                    <p className="text-[#f1eee8]/80 text-xs sm:text-sm md:text-base font-normal mt-0.5">{proj.subtitle}</p>
                   </div>
                 </div>
 
-                <div className="flex flex-wrap items-center gap-3">
+                <div className="flex flex-wrap items-center gap-3 w-full sm:w-auto">
                   <button 
                     onClick={() => setSelectedProject(proj)}
-                    className="rounded-full bg-[#FF655E] text-[#f1eee8] px-6 py-2.5 uppercase tracking-wider font-semibold text-xs md:text-sm hover:bg-[#f1eee8] hover:text-[#0e4f4a] transition-all duration-300 shadow-md flex items-center gap-2"
+                    className="w-full sm:w-auto justify-center rounded-full bg-[#FF655E] text-[#f1eee8] px-5 sm:px-6 py-2.5 uppercase tracking-wider font-semibold text-xs md:text-sm hover:bg-[#f1eee8] hover:text-[#0e4f4a] transition-all duration-300 shadow-md flex items-center gap-2"
                   >
                     <span>System Architecture</span>
                     <ChevronRight size={16} />
@@ -461,33 +531,33 @@ const ProjectsSection = () => {
               </div>
 
               {/* Technologies Badges */}
-              <div className="flex flex-wrap gap-2">
+              <div className="flex flex-wrap gap-1.5 sm:gap-2">
                 {proj.technologies.map((tech) => (
-                  <span key={tech} className="bg-[#f1eee8]/10 text-[#f1eee8] border border-[#f1eee8]/20 px-3 py-1 rounded-full text-xs font-medium tracking-wide">
+                  <span key={tech} className="bg-[#f1eee8]/10 text-[#f1eee8] border border-[#f1eee8]/20 px-2.5 sm:px-3 py-0.5 sm:py-1 rounded-full text-[11px] sm:text-xs font-medium tracking-wide">
                     {tech}
                   </span>
                 ))}
               </div>
 
               {/* Card Images Grid */}
-              <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 h-auto">
-                <div className="lg:col-span-7 relative group rounded-[24px] md:rounded-[30px] overflow-hidden border border-[#f1eee8]/20 shadow-lg h-[260px] sm:h-[340px] md:h-[400px]">
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-6 h-auto">
+                <div className="lg:col-span-7 relative group rounded-[18px] sm:rounded-[24px] md:rounded-[30px] overflow-hidden border border-[#f1eee8]/20 shadow-lg h-[200px] sm:h-[300px] md:h-[400px]">
                   <img 
                     src={proj.img1} 
                     alt={`${proj.name} System Dashboard`} 
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" 
                   />
-                  <div className="absolute top-4 left-4 bg-[#0e4f4a]/85 backdrop-blur-md px-3.5 py-1 rounded-full text-xs font-semibold text-[#f1eee8] border border-[#f1eee8]/20">
+                  <div className="absolute top-3 left-3 sm:top-4 sm:left-4 bg-[#0e4f4a]/85 backdrop-blur-md px-3 py-1 rounded-full text-[11px] sm:text-xs font-semibold text-[#f1eee8] border border-[#f1eee8]/20">
                     Primary System Dashboard
                   </div>
                 </div>
-                <div className="lg:col-span-5 relative group rounded-[24px] md:rounded-[30px] overflow-hidden border border-[#f1eee8]/20 shadow-lg h-[260px] sm:h-[340px] md:h-[400px]">
+                <div className="lg:col-span-5 relative group rounded-[18px] sm:rounded-[24px] md:rounded-[30px] overflow-hidden border border-[#f1eee8]/20 shadow-lg h-[180px] sm:h-[300px] md:h-[400px]">
                   <img 
                     src={proj.img2} 
                     alt={`${proj.name} Architecture & Telemetry`} 
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" 
                   />
-                  <div className="absolute top-4 left-4 bg-[#0e4f4a]/85 backdrop-blur-md px-3.5 py-1 rounded-full text-xs font-semibold text-[#f1eee8] border border-[#f1eee8]/20">
+                  <div className="absolute top-3 left-3 sm:top-4 sm:left-4 bg-[#0e4f4a]/85 backdrop-blur-md px-3 py-1 rounded-full text-[11px] sm:text-xs font-semibold text-[#f1eee8] border border-[#f1eee8]/20">
                     Telemetry & Engine View
                   </div>
                 </div>
@@ -655,19 +725,19 @@ const ContactSection = () => {
   };
 
   return (
-    <section id="contact" className="bg-[#0e4f4a] text-[#f1eee8] rounded-t-[40px] md:rounded-t-[60px] relative z-40 -mt-10 py-24 md:py-32 px-5 sm:px-10 border-t border-[#f1eee8]/10">
-      <div className="max-w-4xl mx-auto flex flex-col md:flex-row gap-16 items-start">
+    <section id="contact" className="bg-[#0e4f4a] text-[#f1eee8] rounded-t-[30px] sm:rounded-t-[40px] md:rounded-t-[60px] relative z-40 -mt-10 py-16 md:py-32 px-4 sm:px-10 border-t border-[#f1eee8]/10">
+      <div className="max-w-4xl mx-auto flex flex-col md:flex-row gap-10 md:gap-16 items-start">
         
         {/* Text Area */}
         <div className="flex-1">
           <FadeIn>
-            <h2 className="hero-heading font-black uppercase text-[3rem] md:text-[5rem] leading-none mb-6">
+            <h2 className="hero-heading font-black uppercase text-3xl sm:text-5xl md:text-[5rem] leading-tight mb-4 md:mb-6">
               Let's Create <br /> Together.
             </h2>
-            <p className="text-[1.1rem] font-medium opacity-80 max-w-sm mb-10">
+            <p className="text-sm sm:text-base md:text-[1.1rem] font-medium opacity-80 max-w-sm mb-6 md:mb-10">
               Ready to bring your ideas to life with AI, web applications, and custom software development? Drop your details below and I'll get back to you immediately.
             </p>
-            <div className="space-y-4 font-medium text-[#f1eee8]/80">
+            <div className="space-y-3 md:space-y-4 font-medium text-sm sm:text-base text-[#f1eee8]/80">
               <p>Email: <a href={`mailto:${MY_INBOX_EMAIL}`} className="hover:text-[#FF655E] transition-colors">{MY_INBOX_EMAIL}</a></p>
               <p>Location: Coimbatore, Tamil Nadu</p>
             </div>
@@ -675,7 +745,7 @@ const ContactSection = () => {
         </div>
 
         {/* Form Area */}
-        <div className="flex-1 w-full bg-[#0e4f4a] p-8 md:p-10 rounded-[40px] border border-[#f1eee8]/20 shadow-2xl relative overflow-hidden">
+        <div className="flex-1 w-full bg-[#0e4f4a] p-5 sm:p-8 md:p-10 rounded-[28px] sm:rounded-[40px] border border-[#f1eee8]/20 shadow-2xl relative overflow-hidden">
           <AnimatePresence>
             {status === 'success' && (
               <motion.div 
